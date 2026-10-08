@@ -1,4 +1,4 @@
-# BodegaSmart 🛒
+# BodegaSmart 
 
 ## 1. Descripción de la Aplicación
 **BodegaSmart** es una aplicación móvil nativa para Android diseñada para la gestión integral y punto de venta (POS) de bodegas, minimarkets y pequeños comercios. Facilita el control diario de ventas, administración de inventarios con alertas inteligentes, seguimiento de cuentas por cobrar ("fiados"), escaneo de códigos de barras/QR y generación de reportes financieros.
