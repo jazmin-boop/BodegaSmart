@@ -1,46 +1,65 @@
-# BodegaSmart - Funcionalidades de la Aplicación
+# BodegaSmart 🛒
 
-**BodegaSmart** es un sistema de gestión integral y punto de venta (POS) diseñado para bodegas y pequeños comercios.
-
----
-
-## 1. Venta Rápida (Punto de Venta - POS)
-* **Carrito de Compras en Tiempo Real:** Selección rápida de productos con actualización automática de subtotales, totales y vuelto.
-* **Escaneo de Código de Barras y QR:** Integración con la cámara del dispositivo para agregar productos al carrito mediante escaneo de código de barras o QR en tiempo real.
-* **Múltiples Métodos de Cobro:** Opción para procesar ventas al contado o registrarlas directamente como crédito ("Fiado").
-* **Generación de Comprobantes:** Emisión e impresión/visualización de boleta digital con el detalle de la compra.
+## 1. Descripción de la Aplicación
+**BodegaSmart** es una aplicación móvil nativa para Android diseñada para la gestión integral y punto de venta (POS) de bodegas, minimarkets y pequeños comercios. Facilita el control diario de ventas, administración de inventarios con alertas inteligentes, seguimiento de cuentas por cobrar ("fiados"), escaneo de códigos de barras/QR y generación de reportes financieros.
 
 ---
 
-## 2. Control y Gestión de Fiados (Créditos)
-* **Directorio de Clientes Deudores:** Registro detallado de clientes con cuentas fiadas y saldos pendientes.
-* **Historial de Movimientos:** Seguimiento de cada compra realizada a crédito por cliente.
-* **Registro de Abonos y Pagos:** Actualización instantánea del saldo deudor tras registrar abonos parciales o cancelaciones totales.
+## 2. Herramientas y Tecnologías Utilizadas
+
+* **Lenguaje de Programación:**
+  * **Java 11:** Lenguaje principal para la lógica de negocio, controladores y comunicación con la base de datos.
+
+* **Desarrollo Android y UI:**
+  * **Android SDK:** Configurado para Android 8.0+ (Min SDK 26, Target SDK 37).
+  * **XML Layouts & Material Design 3:** Componentes visuales responsivos (`ConstraintLayout`, `RecyclerView`, `CardView`, diálogos personalizados).
+  * **Glide:** Biblioteca para la carga y optimización eficiente de imágenes.
+
+* **Base de Datos y Almacenamiento:**
+  * **Room Persistence Library:** Base de datos relacional local sobre SQLite para el almacenamiento estructurado de productos, clientes y ventas.
+
+* **Backend y Respaldo en la Nube:**
+  * **Firebase Realtime Database:** Sincronización y copia de seguridad periódica de datos en la nube.
+  * **Firebase Analytics:** Monitoreo y métricas de uso de la aplicación.
+
+* **Lector de Códigos:**
+  * **ZXing Embedded (`zxing-android-embedded`):** Escaneo mediante la cámara del dispositivo para códigos de barras y códigos QR en orientación vertical.
+
+* **Servicios Web / APIs:**
+  * **Open-Meteo REST API:** Consulta en tiempo real de temperatura y estado climático local mediante peticiones HTTP (`HttpURLConnection`) e interpretación de datos JSON.
+
+* **Herramientas de Construcción y Control de Versiones:**
+  * **Gradle (Kotlin DSL):** Gestión de dependencias y automatización del build.
+  * **Git & GitHub:** Control de versiones y repositorio remoto.
 
 ---
 
-## 3. Gestión de Inventario
-* **Administración de Productos:** Registro, modificación y eliminación de productos con precio, costo, categoría y stock.
-* **Alertas de Stock Bajo:** Indicadores visuales y filtros inmediatos para identificar productos con existencias mínimas.
-* **Alertas de Vencimiento:** Notificaciones e indicadores automáticos para productos próximos a vencer.
-* **Búsqueda y Filtros:** Organización y búsqueda rápida de productos por nombre, categoría o estado de stock/vencimiento.
+## 3. Funcionalidades de la Aplicación
 
----
+* **Punto de Venta (Venta Rápida POS):**
+  * Carrito de compras con cálculo automático de totales y vuelto.
+  * Agregado rápido de productos mediante escaneo de código de barras/QR.
+  * Procesamiento de cobro en efectivo o registro como venta a crédito ("Fiado").
+  * Emisión e impresión/visualización de boletas digitales.
 
-## 4. Reportes y Estadísticas
-* **Resumen de Ventas:** Visualización de ingresos totales, volumen de ventas y margen de ganancia.
-* **Filtros Temporales:** Consultas de ventas por día, semana o mes.
-* **Métricas Clave:** Identificación de los productos más vendidos y comportamiento de compras.
+* **Control de Fiados (Créditos y Deudas):**
+  * Directorio de clientes con saldos pendientes.
+  * Historial detallado de compras a crédito y registro de abonos o cancelación de deudas.
 
----
+* **Gestión de Inventario y Alertas:**
+  * Registro, edición y eliminación de productos organizados por categoría.
+  * Alertas automáticas para productos con **Stock Bajo**.
+  * Notificaciones e indicadores para productos **Próximos a Vencer**.
 
-## 5. Panel Principal e Información en Tiempo Real
-* **Información Climática:** Consulta en tiempo real de temperatura y alertas meteorológicas (vía API Open-Meteo) para anticipar demanda de ciertos productos.
-* **Resumen de Alertas:** Acceso directo desde el panel a productos con stock crítico o próximos a vencer.
-* **Saludo Dinámico:** Personalización según la hora del día.
+* **Reportes y Estadísticas:**
+  * Resumen de ingresos, ventas realizadas y ganancias por periodos (día, semana, mes).
+  * Análisis de productos más vendidos.
 
----
+* **Panel Principal e Información Relevante:**
+  * Saludo dinámico según la hora del día.
+  * Información del clima en tiempo real para prever la demanda de productos según la temperatura.
+  * Acceso directo a productos con alertas activas.
 
-## 6. Sincronización y Respaldo
-* **Base de Datos Local:** Funcionamiento continuo mediante almacenamiento local estructurado (Room Database).
-* **Respaldo en la Nube:** Sincronización y copia de seguridad periódica mediante Firebase.
+* **Respaldo y Seguridad:**
+  * Operación fluida offline mediante la base de datos local Room.
+  * Sincronización automática de respaldos con Firebase.
