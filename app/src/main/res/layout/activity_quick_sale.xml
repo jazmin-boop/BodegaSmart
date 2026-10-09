@@ -30,11 +30,11 @@
 
         <!-- Logo Image on Right Top (Circular Card Covering Entire Circle like Main) -->
         <androidx.cardview.widget.CardView
-            android:layout_width="48dp"
-            android:layout_height="48dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
-            app:cardCornerRadius="24dp"
+            app:cardCornerRadius="30dp"
             app:cardElevation="2dp"
             app:cardBackgroundColor="#FFFFFF">
 
