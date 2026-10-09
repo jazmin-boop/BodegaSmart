@@ -27,6 +27,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.bodega.database.AppDatabase;
+import com.example.bodega.database.FirebaseBackupHelper;
 import com.example.bodega.database.ProductEntity;
 import com.example.bodega.database.SaleEntity;
 import com.journeyapps.barcodescanner.ScanContract;
@@ -343,6 +344,8 @@ public class QuickSaleActivity extends AppCompatActivity {
             p.setStock(p.getStock() - item.quantity);
             db.productDao().update(p);
         }
+
+        FirebaseBackupHelper.syncToFirebase(this, false);
 
         cartItemMap.clear();
         updateCartTotals();

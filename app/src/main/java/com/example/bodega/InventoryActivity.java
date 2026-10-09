@@ -28,6 +28,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.bodega.database.AppDatabase;
+import com.example.bodega.database.FirebaseBackupHelper;
 import com.example.bodega.database.ProductEntity;
 import com.journeyapps.barcodescanner.ScanContract;
 import com.journeyapps.barcodescanner.ScanOptions;
@@ -432,6 +433,7 @@ public class InventoryActivity extends AppCompatActivity {
                     db.productDao().update(existingProduct);
                     Toast.makeText(this, "Producto actualizado", Toast.LENGTH_SHORT).show();
                 }
+                FirebaseBackupHelper.syncToFirebase(this, false);
                 loadInventory();
                 dialog.dismiss();
             }
@@ -511,6 +513,7 @@ public class InventoryActivity extends AppCompatActivity {
 
         btnConfirm.setOnClickListener(v -> {
             db.productDao().delete(p);
+            FirebaseBackupHelper.syncToFirebase(this, false);
             loadInventory();
             Toast.makeText(this, "Producto eliminado", Toast.LENGTH_SHORT).show();
             dialog.dismiss();

@@ -25,6 +25,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.bodega.database.AppDatabase;
 import com.example.bodega.database.CustomerEntity;
+import com.example.bodega.database.FirebaseBackupHelper;
 import com.example.bodega.database.SaleEntity;
 
 import java.text.SimpleDateFormat;
@@ -267,6 +268,7 @@ public class FiadosActivity extends AppCompatActivity {
                     db.customerDao().update(existingCustomer);
                     Toast.makeText(this, "Cliente actualizado", Toast.LENGTH_SHORT).show();
                 }
+                FirebaseBackupHelper.syncToFirebase(this, false);
                 loadCustomers();
                 if (activeCustomer != null && activeCustomer.getId() == (existingCustomer != null ? existingCustomer.getId() : 0)) {
                     CustomerEntity updated = db.customerDao().getCustomerById(activeCustomer.getId());
@@ -337,6 +339,8 @@ public class FiadosActivity extends AppCompatActivity {
 
             Toast.makeText(this, "🎉 Pago de S/ " + String.format(Locale.US, "%.2f", payVal) + " registrado con éxito", Toast.LENGTH_LONG).show();
 
+            FirebaseBackupHelper.syncToFirebase(this, false);
+
             // Refresh customer list and detail panel
             loadCustomers();
             CustomerEntity updatedCustomer = db.customerDao().getCustomerById(customer.getId());
@@ -376,6 +380,7 @@ public class FiadosActivity extends AppCompatActivity {
 
         btnConfirm.setOnClickListener(v -> {
             db.customerDao().delete(c);
+            FirebaseBackupHelper.syncToFirebase(this, false);
             loadCustomers();
             showCustomerListPanel();
             Toast.makeText(this, "Cliente eliminado", Toast.LENGTH_SHORT).show();
@@ -421,6 +426,7 @@ public class FiadosActivity extends AppCompatActivity {
                 View.OnClickListener selectListener = v -> {
                     c.setTotalDebt(c.getTotalDebt() + fiadoSaleAmount);
                     db.customerDao().update(c);
+                    FirebaseBackupHelper.syncToFirebase(FiadosActivity.this, false);
                     Toast.makeText(FiadosActivity.this, "📝 Fiado de S/ " + String.format(Locale.US, "%.2f", fiadoSaleAmount) + " agregado a " + c.getName(), Toast.LENGTH_LONG).show();
 
                     Intent resultIntent = new Intent();

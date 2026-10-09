@@ -1,6 +1,7 @@
 package com.example.bodega.database;
 
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 @Entity(tableName = "products")
@@ -16,6 +17,10 @@ public class ProductEntity {
     private String expirationDate;
     private String imageUrl;
     private String category;
+
+    @Ignore
+    public ProductEntity() {
+    }
 
     public ProductEntity(String barcode, String name, double salePrice, double costPrice, int stock, int minStock, String expirationDate, String imageUrl, String category) {
         this.barcode = barcode;

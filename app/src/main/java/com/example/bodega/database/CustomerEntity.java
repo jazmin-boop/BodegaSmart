@@ -1,6 +1,7 @@
 package com.example.bodega.database;
 
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 @Entity(tableName = "customers")
@@ -12,6 +13,10 @@ public class CustomerEntity {
     private String dni;
     private double totalDebt;
     private String notes;
+
+    @Ignore
+    public CustomerEntity() {
+    }
 
     public CustomerEntity(String name, String phone, String dni, double totalDebt, String notes) {
         this.name = name;

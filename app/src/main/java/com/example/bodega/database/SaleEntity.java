@@ -1,6 +1,7 @@
 package com.example.bodega.database;
 
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 @Entity(tableName = "sales")
@@ -13,6 +14,10 @@ public class SaleEntity {
     private String paymentMethod; // "EFECTIVO", "YAPE/PLIN", "FIADO"
     private long customerId; // 0 if no customer
     private String productSummary;
+
+    @Ignore
+    public SaleEntity() {
+    }
 
     public SaleEntity(long timestamp, double totalAmount, double totalCost, String paymentMethod, long customerId, String productSummary) {
         this.timestamp = timestamp;
