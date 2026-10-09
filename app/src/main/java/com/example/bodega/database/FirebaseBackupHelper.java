@@ -6,8 +6,11 @@ import android.widget.Toast;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 public class FirebaseBackupHelper {
@@ -32,7 +35,12 @@ public class FirebaseBackupHelper {
             List<SaleEntity> sales = db.saleDao().getAllSales();
             backupData.put("sales", sales);
 
-            backupData.put("lastBackupTimestamp", System.currentTimeMillis());
+            // Global backup timestamp directly at the root of bodega_backup
+            long currentTimestamp = System.currentTimeMillis();
+            backupData.put("lastBackupTimestamp", currentTimestamp);
+
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.US);
+            backupData.put("lastBackupDate", sdf.format(new Date(currentTimestamp)));
 
             FirebaseDatabase firebaseDb = FirebaseDatabase.getInstance(DATABASE_URL);
             DatabaseReference ref = firebaseDb.getReference("bodega_backup");
